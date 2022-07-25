@@ -1,12 +1,9 @@
-from flask import (
-    Blueprint,
-    render_template,
-    url_for
-)
+from flask import Flask, render_template, request
+from flask_sqlalchemy import SQLAlchemy
 
-bp = Blueprint('academy', __name__)
+app = Flask(__name__)
 
-@bp.route('/academy')
-def index():
-    return render_template('academy/mainpage.html')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///AcademyDatabase/academy.db'
+db = SQLAlchemy(app)
 
+from academy import routes
