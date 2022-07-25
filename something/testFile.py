@@ -1,3 +1,0 @@
-print('hello')
-
-name= 'Hanzla'
