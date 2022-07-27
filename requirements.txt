@@ -1,5 +1,7 @@
 Flask==2.1.0
 flask-sqlalchemy
+flask-wtf
+wtforms
 google-cloud-datastore==2.7.1
 google-auth==2.6.2
 requests==2.27.1
