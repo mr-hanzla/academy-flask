@@ -4,29 +4,30 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container text-center">
     <h1>Register a user!</h1>
     <form method="post">
+        {{ form.hidden_tag() }}
         <div class="mb-3">
-            {{ form.username.label(for="exampleInputEmail1", class="form-label") }}
-            {{ form.username(class="form-control", id="exampleInputEmail1", placeholder="John Wick") }}
+            {{ form.username.label(for="username", class="form-label") }}
+            {{ form.username(class="form-control", id="username", placeholder="John Wick") }}
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div class="mb-3">
-            {{ form.email.label(for="exampleInputEmail1", class="form-label") }}
-            {{ form.email(class="form-control", id="exampleInputEmail1", placeholder="someone@abc.com") }}
+            {{ form.email.label(for="email", class="form-label") }}
+            {{ form.email(class="form-control", placeholder="someone@abc.com") }}
         </div>
         <div class="mb-3">
-            {{ form.password1.label(for="exampleInputEmail1", class="form-label") }}
-            {{ form.password1(class="form-control", id="exampleInputEmail1") }}
+            {{ form.password1.label(for="password", class="form-label") }}
+            {{ form.password1(class="form-control") }}
         </div>
         <div class="mb-3">
-            {{ form.password2.label(for="exampleInputEmail1", class="form-label") }}
-            {{ form.password2(class="form-control", id="exampleInputEmail1") }}
+            {{ form.password2.label(for="confirm_password", class="form-label") }}
+            {{ form.password2(class="form-control") }}
         </div>
         <div class="mb-3">
-            {{ form.user_type.label(for="exampleInputEmail1", class="form-label") }}
-            {{ form.user_type(class="form-control", id="exampleInputEmail1", placeholder="Admin, Student, Teacher") }}
+            {{ form.user_type.label(for="user_type", class="form-label") }}
+            {{ form.user_type(class="form-control", placeholder="Admin, Student, Teacher") }}
         </div>
 
         {{ form.submit(class="btn btn-primary") }}
