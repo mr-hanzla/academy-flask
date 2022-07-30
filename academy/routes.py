@@ -27,15 +27,19 @@ def register_user():
     form = RegisterUserForm()
     if request.method == 'POST':
         if form.validate_on_submit():
+            show('registring.....')
             new_user = User(
                 username=form.username.data,
                 email=form.email.data,
-                password_hash=form.password1.data,
+                password=form.password1.data,
                 user_type=form.user_type.data
             )
+            show('USER is set!')
 
             db.session.add(new_user)
+            show('session. ADDED')
             db.session.commit()
+            show('COMMITED REGISTERED!')
             return redirect(url_for('root'))
         if form.errors != {}:
             for error in form.errors.values():
