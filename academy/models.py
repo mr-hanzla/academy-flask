@@ -13,6 +13,10 @@ class User(db.Model, UserMixin):
     user_type = db.Column(db.String(), nullable=False)
 
     @property
+    def testingProperty(self):
+        return 'Yup, @propery tag works'
+
+    @property
     def password(self):
         return self.password_hash
     

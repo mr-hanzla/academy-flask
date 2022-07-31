@@ -3,7 +3,7 @@ from flask import flash, render_template, redirect, url_for, request
 from academy.forms import RegisterUserForm, LoginUserForm
 from academy.models import User
 from academy import db
-from flask_login import login_user
+from flask_login import login_user, logout_user
 
 def show(msg):
     print('*'*50)
@@ -53,6 +53,11 @@ def register_user():
 
     return render_template('academy/register.html', form=form)
 
+@app.route('/logout')
+def logout():
+    logout_user()
+    flash('You have been logged out!', category='info')
+    return redirect(url_for('root'))
 
 @app.route('/testing')
 def testing():
