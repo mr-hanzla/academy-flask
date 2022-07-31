@@ -26,6 +26,9 @@ class User(db.Model, UserMixin):
     
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.password_hash, attempted_password)
+    
+    def __repr__(self) -> str:
+        return f'{self.username} - [{self.id}]'
 
 
 class PostTesting(db.Model):

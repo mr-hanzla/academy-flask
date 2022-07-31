@@ -3,7 +3,7 @@ from flask import flash, render_template, redirect, url_for, request
 from academy.forms import RegisterUserForm, LoginUserForm
 from academy.models import User
 from academy import db
-from flask_login import login_user, logout_user
+from flask_login import current_user, login_user, logout_user, login_required
 
 def show(msg):
     print('*'*50)
@@ -46,6 +46,8 @@ def register_user():
 
             db.session.add(new_user)
             db.session.commit()
+            login_user(new_user)
+            flash(f'Account Created! You are now logged in as {new_user.username}', category='info')
             return redirect(url_for('root'))
         if form.errors != {}:
             for error in form.errors.values():
@@ -60,5 +62,8 @@ def logout():
     return redirect(url_for('root'))
 
 @app.route('/testing')
+@login_required
 def testing():
+    if current_user:
+        show(current_user)
     return render_template('testing.html')
